@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, FlatList, Text } from 'react-native';
 import { Post } from './Post';
 
-export const PostList = ({ data = [], onOpen }) => {
+export const PostList = ({ data = [], onOpen, task }) => {
   if (!data.length) {
     return (
       <View style={styles.wraper}>
@@ -15,7 +15,9 @@ export const PostList = ({ data = [], onOpen }) => {
       <FlatList
         data={data}
         keyExtractor={post => post.id.toString()}
-        renderItem={({ item }) => <Post post={item} onOpen={onOpen} />}
+        renderItem={({ item }) => (
+          <Post post={item} onOpen={onOpen} task={task} />
+        )}
       />
       {/* <Button title="Go to post" onPress={goToPost} />  */}
     </View>
